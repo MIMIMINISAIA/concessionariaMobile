@@ -44,6 +44,7 @@ const CadastroCarros: React.FC = () => {
         if (!valor) {
             errors.valor = "Valor é obrigatória";
         }
+        
         setErrors(errors);
         return Object.keys(errors).length === 0;
     }
@@ -89,18 +90,20 @@ const CadastroCarros: React.FC = () => {
             <StatusBar backgroundColor="#F2D22E" barStyle="light-content" />
 
             <View style={styles.header}>
+                    <Image source={require('./assets/images/LogoTipo.png')} style={styles.logoTipo} />
+               
 
 
                 {/* <Image source={require('../assets/images/logo.png')} style={styles.logo} /> */}
-                <Text style={styles.headerText2}>Sunset Cars</Text>
+                <Text style={styles.headerText2}>Cadastro</Text>
 
-                <Text style={styles.headerTexto}></Text>
+        
 
             </View>
-            {/* <ImageBackground source={require('../assets/images/fundo.png')} style={styles.fundo}>      */}
+            <ImageBackground source={require('./assets/images/dark.jpg')} style={styles.fundo}>     
 
 
-
+          <TouchableOpacity>
             <ScrollView>
                 <View style={styles.form}>
                     <TextInput
@@ -108,63 +111,65 @@ const CadastroCarros: React.FC = () => {
                         placeholder="Modelo"
                         value={modelo}
                         onChangeText={setModelo}
-                    />{errors.nome && <Text style={styles.errorText}>{errors.modelo}</Text>}
+                    />
+                    {/* {errors.nome && <Text style={styles.errorText}>{errors.modelo}</Text>} */}
 
                     <TextInput
                         style={styles.input}
                         placeholder="Ano"
                         value={ano}
                         onChangeText={setAno}
-                    />{errors.telefone && <Text style={styles.errorText}>{errors.ano}</Text>}
+                    />
+                    {/* {errors.telefone && <Text style={styles.errorText}>{errors.ano}</Text>} */}
 
                     <TextInput
                         style={styles.input}
                         placeholder="Marca"
                         value={marca}
                         onChangeText={setMarca}
-                    />{errors.cpf && <Text style={styles.errorText}>{errors.marca}</Text>}
+                    />
+                    {/* {errors.cpf && <Text style={styles.errorText}>{errors.marca}</Text>} */}
 
                     <TextInput
                         style={styles.input}
                         placeholder="Cor"
                         value={cor}
                         onChangeText={setCor}
-                    />{errors.endereco && <Text style={styles.errorText}>{errors.cor}</Text>}
+                    />
+                    {/* {errors.endereco && <Text style={styles.errorText}>{errors.cor}</Text>} */}
+
 
                     <TextInput
                         style={styles.input}
                         placeholder="Peso"
                         value={peso}
                         onChangeText={setPeso}
-                    />{errors.email && <Text style={styles.errorText}>{errors.peso}</Text>}
+                    />
+                    {/* {errors.email && <Text style={styles.errorText}>{errors.peso}</Text>} */}
 
                     <TextInput
                         style={styles.input}
                         placeholder="Potencia"
                         value={potencia}
                         onChangeText={setPotencia}
-                    />{errors.password && <Text style={styles.errorText}>{errors.potencia}</Text>}
+                    />
+                    {/* {errors.password && <Text style={styles.errorText}>{errors.potencia}</Text>} */}
 
                     <TextInput
                         style={styles.input}
                         placeholder="Descrição"
                         value={descricao}
                         onChangeText={setDescricao}
-                    />{errors.nome && <Text style={styles.errorText}>{errors.descricao}</Text>}
+                    />
+                    {/* {errors.nome && <Text style={styles.errorText}>{errors.descricao}</Text>} */}
 
                     <TextInput
                         style={styles.input}
                         placeholder="Valor"
                         value={valor}
                         onChangeText={setValor}
-                    />{errors.telefone && <Text style={styles.errorText}>{errors.valor}</Text>}
-
-
-                    <View style={styles.alinhamentoImageSelecionada}>
-                        {foto ? <Image source={{ uri: foto }} style={styles.imageSelecionada} /> : null}
-
-
-                    </View>{errors.foto && <Text style={styles.errorText}>{errors.foto}</Text>}
+                    />
+                    {/* {errors.telefone && <Text style={styles.errorText}>{errors.valor}</Text>} */}
 
                    
                     <TouchableOpacity style={styles.button} onPress={CadastroCarros}>
@@ -175,29 +180,30 @@ const CadastroCarros: React.FC = () => {
 
                 </View>
             </ScrollView>
+            </TouchableOpacity>
 
 
-            {/* </ImageBackground> */}
+            </ImageBackground>
 
             <View style={styles.footer}>
 
                 <TouchableOpacity>
                     <Image
-                        source={require('../assets/images/menu.png')}
+                        source={require('./assets/images/home.png')}
                         style={styles.footerIcon}
                     />
                 </TouchableOpacity>
 
 
                 <TouchableOpacity>
-                    <Image source={require('../assets/images/pedidos.png')}
+                    <Image source={require('./assets/images/lupe.png')}
                         style={styles.footerIcon}
                     />
 
                 </TouchableOpacity>
 
                 <TouchableOpacity>
-                    <Image source={require('../assets/images/marvel.png')}
+                    <Image source={require('./assets/images/orders.png')}
                         style={styles.footerIcon2}
                     />
 
@@ -205,18 +211,13 @@ const CadastroCarros: React.FC = () => {
 
 
                 <TouchableOpacity>
-                    <Image source={require('../assets/images/home.png')}
+                    <Image source={require('./assets/images/profile.png')}
                         style={styles.footerIcon}
                     />
 
                 </TouchableOpacity>
 
-                <TouchableOpacity>
-                    <Image source={require('../assets/images/hero.png')}
-                        style={styles.footerIcon}
-                    />
-
-                </TouchableOpacity>
+      
             </View>
 
 
@@ -237,66 +238,62 @@ const styles = StyleSheet.create({
     header: {
         backgroundColor: '#F2D22E',
         alignItems: 'center',
-        paddingVertical: 20
+        paddingVertical: 15
     },
-    headerTexto: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: 'white',
-    },
+    
     //#f0f0f0
     form: {
-        padding: 50,
-        backgroundColor: '#F2D22E',
-        marginBottom: 10,
-        borderRadius: 100
+        padding: 40,
+        backgroundColor: '#212426'
+        
+
 
     },
+
+
     input: {
+        margin: 10,
         height: 40,
-        borderColor: 'black',
+        borderColor: 'white',
         borderWidth: 1,
-        marginBottom: 10,
+        marginBottom: 5,
         paddingHorizontal: 10,
-        borderRadius: 10
+        borderRadius: 10,
+        
     },
-    imageButton: {
-        backgroundColor: 'red',
-        padding: 10,
-        borderRadius: 5,
-        alignItems: 'center',
-        marginBottom: 10,
-    },
+
+
+
+
+  
+
     imageButtonText: {
 
         color: 'white',
         fontWeight: 'bold'
 
     },
-    imageSelecionada: {
-        width: 100,
+ 
 
-        height: 100,
-        resizeMode: 'cover',
-        borderRadius: 50,
-        marginBottom: 10,
 
-    },
     alinhamentoImageSelecionada: {
         alignItems: 'center',
 
 
     },
+
+
     button: {
-        backgroundColor: 'red',
+     
+        marginTop: 50,
+        backgroundColor: 'blue',
         padding: 10,
         borderRadius: 5,
         alignItems: 'center'
     },
-    buttonText: {
-        color: 'white',
-        fontWeight: 'bold',
-    },
+
+
+  
     fundo: {
         flex: 1,
         justifyContent: 'center'
@@ -314,9 +311,15 @@ const styles = StyleSheet.create({
 
 
     },
+
+
+
+        /**footer */
+
+
     footer: {
         borderTopWidth: 0.2,
-        backgroundColor: '#3B9ABF',
+        backgroundColor: 'yellow',
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
@@ -329,14 +332,23 @@ const styles = StyleSheet.create({
         height: 30
 
     },
+
     footerIcon2: {
         width: 35,
         height: 35
 
     },
+
     errorText: {
         color: '#3B9ABF',
         marginBottom: 5,
+    },
+
+
+    logoTipo: {
+
+      
+        padding: 1,
     },
 
 });
