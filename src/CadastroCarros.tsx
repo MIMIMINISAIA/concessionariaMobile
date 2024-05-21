@@ -75,12 +75,6 @@ const CadastroCarros: React.FC = () => {
             <ScrollView>
                 <View style={styles.form}>
 
-                <TextInput
-                        style={styles.input}
-                        placeholder="Modelo"
-                        value={modelo}
-                        onChangeText={setModelo}
-                    />
 
                     <TextInput
                         style={styles.input}
@@ -148,8 +142,8 @@ const CadastroCarros: React.FC = () => {
                     {/* {errors.telefone && <Text style={styles.errorText}>{errors.valor}</Text>} */}
 
                    
-                    <TouchableOpacity style={styles.button} onPress={CadastroCarros}>
-                        <Text>Cadastrar</Text>
+                    <TouchableOpacity style={styles.button} onPress={cadastrarCarros}>
+                        <Text style={styles.textbutton}>Cadastrar</Text>
 
                     </TouchableOpacity>
 
@@ -219,11 +213,7 @@ const styles = StyleSheet.create({
  
 
 
-    alinhamentoImageSelecionada: {
-        alignItems: 'center',
-
-
-    },
+  
 
 
     button: {
@@ -233,6 +223,9 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 5,
         alignItems: 'center'
+    },
+    textbutton: {
+        color: 'white'
     },
 
 

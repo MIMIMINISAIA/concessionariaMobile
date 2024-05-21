@@ -14,7 +14,7 @@ function Home(): React.JSX.Element {
             <View style={styles.header}>
                 <Image source={require('../assets/images/logotipom.png')} style={styles.logo} />
             </View>
-            <Footer />
+            <Footer  />
 
         </View>
     );
@@ -23,6 +23,9 @@ function Home(): React.JSX.Element {
 const styles = StyleSheet.create({
     container: {
         flex: 1
+    },
+    footer: {
+        alignItems: 'flex-end'
     },
     header: {
         backgroundColor: '#3a415a',
