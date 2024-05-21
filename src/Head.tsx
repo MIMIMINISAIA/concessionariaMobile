@@ -1,9 +1,10 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 
 function Head(): React.JSX.Element {
     return(
         <View style={styles.header}>
+            <Image source={require('./assets/images/logotipom.png')} style={styles.logo}/>
           
         </View>
     );
@@ -23,6 +24,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'white'
     },
+    logo:{
+        width:250,
+        height:150
+    }
 
 })
 

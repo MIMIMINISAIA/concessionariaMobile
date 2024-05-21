@@ -12,8 +12,7 @@ function Home(): React.JSX.Element {
             <StatusBar backgroundColor="#3a415a" barStyle="light-content" />
 
             <View style={styles.header}>
-                <Image source={require('../assets/images/logotipom.png')} style={styles.logo} />
-            </View>
+                            </View>
             <Footer  />
 
         </View>

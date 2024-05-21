@@ -3,6 +3,7 @@ import { Image, ImageBackground, ScrollView, StatusBar, StyleSheet, Text, TextIn
 
 import axios from 'axios';
 import Footer from "./Footer";
+import Head from "./Head";
 
 const CadastroCarros: React.FC = () => {
 
@@ -58,11 +59,7 @@ const CadastroCarros: React.FC = () => {
             <StatusBar backgroundColor="#3a415a" barStyle="light-content" />
 
             <View style={styles.header}>
-                    <Image source={require('./assets/images/logotipom.png')} style={styles.logo} />
-               
-
-
-                {/* <Image source={require('../assets/images/logo.png')} style={styles.logo} /> */}
+                <Head/>
                 <Text style={styles.headerText2}>Cadastro Veiculo</Text>
 
         

@@ -41,7 +41,7 @@ function PesquisaProdutos(): React.JSX.Element {
 
     return(
         <View style={styles.container}>
-            <StatusBar backgroundColor="red" barStyle="light-content"/>
+            <StatusBar backgroundColor="#3a415a" barStyle="light-content"/>
             <Head />
             <FlatList 
                 data={produtos}
