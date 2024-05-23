@@ -8,14 +8,16 @@ function Footer(): React.JSX.Element {
 
     return(
         <View style={styles.footer}>
-           <TouchableOpacity onPress={()=> navigation.navigate('PesquisarProduto')} >
-            <Image source={require('./assets/images/lupa.png')} 
-            style={styles.footerIcon}/>
-           </TouchableOpacity>
+        
 
            <TouchableOpacity onPress={()=> navigation.navigate('listagem')}>
             <Image source={require('./assets/images/menu.png')}
             style={styles.footerIcon} />
+           </TouchableOpacity>
+
+           <TouchableOpacity onPress={()=> navigation.navigate('PesquisarProduto')} >
+            <Image source={require('./assets/images/homee.png')} 
+            style={styles.footerIcon}/>
            </TouchableOpacity>
 
            <TouchableOpacity onPress={()=> navigation.navigate('Profile')}>
