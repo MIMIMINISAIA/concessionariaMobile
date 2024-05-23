@@ -1,120 +1,110 @@
-import { useNavigation, useRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-import Footer from "../Footer";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { TextInput } from "react-native-gesture-handler";
+import axios from "axios";
 import Head from "../Head";
+import Footer from "../Footer";
 
-
-
-
-interface Produto {
-    id: number;
-    modelo: string;
-    ano: string;
-    maca: number;
-    cor: string;
-    peso: string;
-    potencia: string;
-    descricao: string;
-    valor: string
-
-}
-
-const EditarProduto: React.FC = () => {
-
-    const [carros, setCarros] = useState<[]>([]);
+const Editar: React.FC = () => {
+    const [id, setId] = useState<string>('');
     const [modelo, setModelo] = useState<string>('');
-    const [ano, setAno] = useState<string>('');
-    const [marca, setMarca] = useState<string>('');
-    const [cor, setCor] = useState<string>('');
-    const [peso, setPeso] = useState<string>('');
-    const [potencia, setPotencia] = useState<string>('');
-    const [descricao, setDescricao] = useState<string>('');
-    const [valor, setValor] = useState<string>('');
+    const [ano, SetAno] = useState<string>('');
+    const [marca, SetMarca] = useState<string>('');
+    const [cor, SetCor] = useState<string>('');
+    const [peso, SetPeso] = useState<string>('');
+    const [potencia, SetPotencia] = useState<string>('');
+    const [descricao, SetDescricao] = useState<string>('');
+    const [preco, SetPreco] = useState<string>('');
 
     const navigation = useNavigation();
     const route = useRoute();
 
     useEffect(() => {
-        const { carros } = route.params;
+        const { item } = route.params;
+        setId(item.id);
+        setModelo(item.modelo);
+        SetAno(item.ano);
+        SetMarca(item.marca);
+        SetCor(item.cor);
+        SetPeso(item.peso);
+        SetPotencia(item.potencia);
+        SetDescricao(item.descricao);
+        SetPreco(item.preco);
+    }, []);
 
-        setModelo(carros.modelo);
-        setAno(carros.ano);
-        setMarca(carros.marca);
-        setCor(carros.cor);
-        setPeso(carros.peso);
-        setPotencia(carros.potencia);
-        setDescricao(carros.descricao);
-        setValor(carros.valor);
-    })
+    const atualizar = () => {
+        const dadosDoCarro = {
+            id: id,
+            modelo: modelo,
+            ano: ano,
+            marca: marca,
+            cor: cor,
+            peso: peso,
+            potencia: potencia,
+            descricao: descricao,
+            preco: preco,
+        };
+        axios.put("http://10.137.11.231:8000/api/carros/atualizar", dadosDoCarro, {
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }
+        }).then(response => {
+            console.log(response.data);
+            navigation.goBack(); // Redireciona para a tela anterior após a atualização bem-sucedida
+        }).catch(error => {
+            console.error(error);
+        });
+    }
+
     return (
         <View style={styles.container}>
-            <StatusBar backgroundColor="red" barStyle="light-content" />
+            <StatusBar backgroundColor='red' barStyle="light-content" />
             <Head />
+            <View>
+                <TextInput value={modelo}
+                 onChangeText={setModelo}
+                  style={styles.input} />
 
-            <View style={styles.form}>
-                <TextInput
-                    style={styles.input}
-                    value={modelo}
-                    onChangeText={setModelo}
-                />
+                <TextInput value={ano}
+                 onChangeText={SetAno}
+                  keyboardType="numeric"
+                   style={styles.input} />
 
-                <TextInput
-                    style={styles.input}
-                    value={ano}
-                    onChangeText={setAno}
+                <TextInput value={marca}
+                 onChangeText={SetMarca}
+                  style={styles.input} />
 
-                />
+                <TextInput value={cor}
+                 onChangeText={SetCor}
+                  style={styles.input} />
 
-                <TextInput
-                    style={styles.input}
-                    value={marca}
-                    onChangeText={setMarca}
+                <TextInput value={peso}
+                 onChangeText={SetPeso}
+                  style={styles.input} />
 
-                />
+                <TextInput value={potencia}
+                 onChangeText={SetPotencia}
+                  style={styles.input} />
 
-                <TextInput
-                    style={styles.input}
-                    value={cor}
-                    onChangeText={setCor}
+                <TextInput value={descricao}
+                 onChangeText={SetDescricao}
+                  multiline
+                   style={styles.input} />
 
-                />
-
-                <TextInput
-                    style={styles.input}
-                    value={peso}
-                    onChangeText={setPeso}
-
-                />
-
-                <TextInput
-                    style={styles.input}
-                    value={potencia}
-                    onChangeText={setPotencia}
-
-                />
-
-                <TextInput
-                    style={styles.input}
-                    value={descricao}
-                    onChangeText={setDescricao}
-
-                />
-
-                <TextInput
-                    style={styles.input}
-                    value={valor}
-                    onChangeText={setValor}
-
-                />
-
-                <TouchableOpacity style={styles.button}
-                    onPress={() => navigation.goBack()}>
+                <TextInput value={preco}
+                 onChangeText={SetPreco}
+                  keyboardType="numeric"
+                   style={styles.input} />
+                   
+                <TouchableOpacity onPress={atualizar} style={styles.button}>
+                    <Text style={styles.buttonText}>Editar</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.goBack()} style={styles.button}>
                     <Text style={styles.buttonText}>Voltar</Text>
                 </TouchableOpacity>
-
-                <View style={styles.menuList}></View>
                 <Footer />
             </View>
         </View>
@@ -123,68 +113,29 @@ const EditarProduto: React.FC = () => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-    },
-    header: {
-        backgroundColor: "red",
-        paddingVertical: 10,
-        alignItems: 'center'
-    },
-    headerText: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: 'white'
-
-    },
-    form: {
-        padding: 10,
-        backgroundColor: "#f0f0f0",
-        marginBottom: 10
+        flex: 1
     },
     input: {
+        margin: 10,
         height: 40,
-        borderColor: 'gray',
+        borderColor: 'black',
         borderWidth: 1,
-        marginBottom: 10,
+        marginBottom: 5,
         paddingHorizontal: 10,
         borderRadius: 10
     },
-    imageButton: {
-        backgroundColor: 'red',
+    button: {
+        backgroundColor: '#3a415a',
         padding: 10,
         borderRadius: 5,
         alignItems: 'center',
-        marginBottom: 10
-    },
-    imageButtonText: {
-        color: 'white',
-        fontWeight: 'bold'
-    },
-    imagemSelecionada: {
-        width: 200,
-        height: 200,
-        resizeMode: 'cover',
-        borderRadius: 5,
         marginBottom: 10,
-    },
-    alinhamentoImagemSelecionada: {
-        alignItems: 'center'
-    },
-    button: {
-        backgroundColor: 'red',
-        padding: 10,
-        borderRadius: 5,
-        alignItems: 'center'
+        borderColor: 'white'
     },
     buttonText: {
         color: 'white',
         fontWeight: 'bold'
-    },
-    menuList: {
-        flexGrow: 1
-    },
+    }
+});
 
-
-})
-
-export default EditarProduto;
+export default Editar;

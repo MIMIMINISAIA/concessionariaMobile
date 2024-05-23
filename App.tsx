@@ -8,6 +8,7 @@ import PesquisaProdutos from './src/Screens/PesquisarProduto';
 import Footer from './src/Footer';
 import { createStackNavigator } from '@react-navigation/stack';
 import Listagem from './src/Screens/listagem';
+import Editar from './src/Screens/EditarProdutos';
 
 
 const Stack = createStackNavigator();
@@ -16,12 +17,12 @@ function App(): JSX.Element{
   return(
     <NavigationContainer>
     <Stack.Navigator>
-      <Stack.Screen name='Home' component={Home} options={{headerShown: false}}/>
-
+      
+    <Stack.Screen name='listagem' component={Listagem} options={{headerShown: false}}/>
       <Stack.Screen name='Profile' component={CadastroCarros} options={{headerShown: false}}/>
 
-      <Stack.Screen name='listagem' component={Listagem} options={{headerShown: false}}/>
-
+      
+      <Stack.Screen name='editar' component={Editar} options={{headerShown: false}}/>
       <Stack.Screen name='PesquisarProduto' component={PesquisaProdutos} options={{headerShown: false}}/>
 
     </Stack.Navigator>

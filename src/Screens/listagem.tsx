@@ -7,6 +7,7 @@ import { useNavigation } from "@react-navigation/native";
 import Head from "../Head";
 import Footer from "../Footer";
 
+
 function Listagem():React.JSX.Element{
     const navigation = useNavigation();
 
@@ -69,7 +70,7 @@ function Listagem():React.JSX.Element{
                     <TouchableOpacity onPress={() => hendleDelete(item.id)}>
                         <Image source={require('../assets/images/delete.png')}style={styles.delete} />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={()=> navigation.navigate('editar')}>
+                    <TouchableOpacity onPress={()=> navigation.navigate('editar',{item})}>
                         <Image source={require('../assets/images/editar.png')} style={styles.editar}/>
                     </TouchableOpacity>
                 </TouchableOpacity>
@@ -96,7 +97,9 @@ const styles = StyleSheet.create({
         padding: 20,
         marginVertical: 8,
         marginHorizontal: 16,
-        borderRadius: 15
+        borderRadius: 10,
+        borderBottomWidth: 10,
+        borderColor: '#3a415a'
     },
     modelo: {
         fontSize: 25,
@@ -108,7 +111,8 @@ const styles = StyleSheet.create({
         height:50,
         position:'absolute',
         marginHorizontal:270,
-        marginVertical:-190
+        marginVertical:-190,
+        
     },
     editar:{
         width:50,
