@@ -60,7 +60,7 @@ const CadastroCarros: React.FC = () => {
 
             <View style={styles.header}>
                 <Head/>
-                <Text style={styles.headerText2}>Cadastro Veiculo</Text>
+                <Text style={styles.headerText2}>Cadastro Veículo</Text>
 
         
 
