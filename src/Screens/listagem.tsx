@@ -35,7 +35,7 @@ function Listagem(): React.JSX.Element {
         peso: string;
         potencia: string;
         descricao: string;
-        preco: string;
+        valor: string;
     }
 
     useEffect(() => {
@@ -82,7 +82,7 @@ function Listagem(): React.JSX.Element {
             <Text >{item.peso}</Text>
             <Text >{item.potencia}</Text>
             <Text >{item.descricao}</Text>
-            <Text >{item.preco}</Text>
+            <Text >{item.valor}</Text>
             <TouchableOpacity onPress={() => hendleDelete(item.id)}>
                 <Image source={require('../assets/images/sai.png')} style={styles.delete} />
             </TouchableOpacity>
@@ -104,7 +104,7 @@ function Listagem(): React.JSX.Element {
             <Text >{item.peso}</Text>
             <Text >{item.potencia}</Text>
             <Text >{item.descricao}</Text>
-            <Text >{item.preco}</Text>
+            <Text >{item.valor}</Text>
             <TouchableOpacity onPress={() => hendleDelete(item.id)}>
                 <Image source={require('../assets/images/sai.png')} style={styles.delete} />
             </TouchableOpacity>

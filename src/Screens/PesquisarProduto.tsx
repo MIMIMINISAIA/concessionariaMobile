@@ -8,10 +8,14 @@ import Footer from "../Footer";
 
 interface Produto {
     id: number;
-    nome: string;
-    ingredientes: string;
-    preco: string;
-    imagem: string;
+    modelo: string;
+    ano: string;
+    marca: string;
+    cor: string;
+    peso: string;
+    potencia: string;
+    descricao: string;
+    valor: string;
 }
 
 function PesquisaProdutos(): React.JSX.Element {
@@ -31,9 +35,15 @@ function PesquisaProdutos(): React.JSX.Element {
             <TouchableOpacity style={styles.menuItem}
             onPress={() => selecionarProduto(item)}>
                 <View>
-                    <Text>{item.nome}</Text>
-                    <Text>{item.ingredientes}</Text>
-                    <Text>{item.preco}</Text>
+                    <Text>{item.modelo}</Text>
+                    <Text>{item.ano}</Text>
+                    <Text>{item.marca}</Text>
+                    <Text>{item.cor}</Text>
+                    <Text>{item.peso}</Text>
+                    <Text>{item.potencia}</Text>
+                    <Text>{item.descricao}</Text>
+                    <Text>{item.valor}</Text>
+
                 </View>
             </TouchableOpacity>
         );

@@ -16,7 +16,7 @@ const Editar: React.FC = () => {
     const [peso, SetPeso] = useState<string>('');
     const [potencia, SetPotencia] = useState<string>('');
     const [descricao, SetDescricao] = useState<string>('');
-    const [preco, SetPreco] = useState<string>('');
+    const [valor, Setvalor] = useState<string>('');
 
     const navigation = useNavigation();
     const route = useRoute();
@@ -31,7 +31,7 @@ const Editar: React.FC = () => {
         SetPeso(item.peso);
         SetPotencia(item.potencia);
         SetDescricao(item.descricao);
-        SetPreco(item.preco);
+        Setvalor(item.valor);
     }, []);
 
     const atualizar = () => {
@@ -44,7 +44,7 @@ const Editar: React.FC = () => {
             peso: peso,
             potencia: potencia,
             descricao: descricao,
-            preco: preco,
+            valor: valor,
         };
         axios.put("http://10.137.11.231:8000/api/carros/atualizar", dadosDoCarro, {
             headers: {
@@ -94,8 +94,8 @@ const Editar: React.FC = () => {
                   multiline
                    style={styles.input} />
 
-                <TextInput value={preco}
-                 onChangeText={SetPreco}
+                <TextInput value={valor}
+                 onChangeText={Setvalor}
                   keyboardType="numeric"
                    style={styles.input} />
                    
